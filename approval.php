@@ -8,16 +8,21 @@ if (!isset($_SESSION["loggedin"]) && !($_SESSION["loggedin"] === true)) {
     exit;
  }
 
- $qwe=$_SESSION['role'];
+ 
+include('conn.php');
 
-if($qwe!='Mentor'){
+
+
+
+$uid = $_SESSION['uid'];
+
+$userrole=$conn->query("SELECT role FROM user WHERE uID={$uid}");
+$ro=$userrole->fetch_assoc();
+
+if($ro['role']!="Mentor" && $ro['role']!="Admin"){
     header('location: n.php');
 }
 
-
-include('conn.php');
-
-$uid = $_SESSION['uid'];
 
 
 $limit = isset($_POST["limit-records"]) ? $_POST["limit-records"] : 10;

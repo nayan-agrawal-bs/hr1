@@ -10,11 +10,7 @@ if (!isset($_SESSION["loggedin"]) && !($_SESSION["loggedin"] === true)) {
     exit;
  }
 
-$qwe=$_SESSION['role'];
 
-if($qwe!='Mentor'){
-    header('location: n.php');
-}
 
 
 
@@ -22,6 +18,14 @@ if($qwe!='Mentor'){
 
 include('conn.php');
 //password=asdfadfa
+$uid1 = $_SESSION['uid'];
+
+$userrole=$conn->query("SELECT role FROM user WHERE uID={$uid1}");
+$ro=$userrole->fetch_assoc();
+
+if($ro['role']!="Admin"){
+    header('location: n.php');
+}
 
 
 

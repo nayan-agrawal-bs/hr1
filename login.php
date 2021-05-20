@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['uid'] = $uid;
             $_SESSION['mentor']=$row['mentor'];
+            echo $_SESSION['mentor'];
             $_SESSION['role']=$row['role'];
             $_SESSION['LAST_ACTIVITY'] = time();
 

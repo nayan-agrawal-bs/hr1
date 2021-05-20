@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 include('conn.php');
 $array=$_POST['array'];
 $qw=explode(",",$array);
